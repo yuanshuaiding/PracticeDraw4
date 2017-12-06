@@ -15,8 +15,8 @@ import com.hencoder.hencoderpracticedraw4.R;
 public class Practice04ScaleView extends View {
     Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
     Bitmap bitmap;
-    Point point1 = new Point(200, 200);
-    Point point2 = new Point(600, 200);
+    Point point1 = new Point(100, 200);
+    Point point2 = new Point(500, 200);
 
     public Practice04ScaleView(Context context) {
         super(context);
@@ -37,8 +37,17 @@ public class Practice04ScaleView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-
+        canvas.save();
+        float px = point1.x + bitmap.getWidth() / 2;
+        float py = point1.y + bitmap.getHeight() / 2;
+        canvas.scale(1.3f, 1.3f, px, py);
         canvas.drawBitmap(bitmap, point1.x, point1.y, paint);
+        canvas.restore();
+        px = point2.x + bitmap.getWidth() / 2;
+        py = point2.y + bitmap.getHeight() / 2;
+        canvas.save();
+        canvas.scale(0.6f, 1.6f, px, py);
         canvas.drawBitmap(bitmap, point2.x, point2.y, paint);
+        canvas.restore();
     }
 }

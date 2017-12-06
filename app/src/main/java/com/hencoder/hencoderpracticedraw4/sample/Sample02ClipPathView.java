@@ -18,8 +18,8 @@ public class Sample02ClipPathView extends View {
     Bitmap bitmap;
     Path path1 = new Path();
     Path path2 = new Path();
-    Point point1 = new Point(200, 200);
-    Point point2 = new Point(600, 200);
+    Point point1 = new Point(100, 200);
+    Point point2 = new Point(500, 200);
 
     public Sample02ClipPathView(Context context) {
         super(context);

@@ -17,7 +17,7 @@ public class Sample11CameraRotateView extends View {
     Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
     Bitmap bitmap;
     Point point1 = new Point(200, 100);
-    Point point2 = new Point(600, 200);
+    Point point2 = new Point(600, 100);
     Camera camera = new Camera();
 
     public Sample11CameraRotateView(Context context) {

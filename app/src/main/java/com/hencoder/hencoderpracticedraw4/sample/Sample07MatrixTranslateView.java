@@ -16,8 +16,8 @@ import com.hencoder.hencoderpracticedraw4.R;
 public class Sample07MatrixTranslateView extends View {
     Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
     Bitmap bitmap;
-    Point point1 = new Point(200, 200);
-    Point point2 = new Point(600, 200);
+    Point point1 = new Point(100, 100);
+    Point point2 = new Point(400, 100);
     Matrix matrix = new Matrix();
 
     public Sample07MatrixTranslateView(Context context) {
@@ -49,7 +49,7 @@ public class Sample07MatrixTranslateView extends View {
 
         canvas.save();
         matrix.reset();
-        matrix.postTranslate(200, 0);
+        matrix.postTranslate(100, 0);
         canvas.concat(matrix);
         canvas.drawBitmap(bitmap, point2.x, point2.y, paint);
         canvas.restore();

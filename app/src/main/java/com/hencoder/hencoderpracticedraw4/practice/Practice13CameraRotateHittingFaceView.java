@@ -9,7 +9,6 @@ import android.graphics.Camera;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Paint;
-import android.graphics.Point;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
@@ -20,7 +19,6 @@ import com.hencoder.hencoderpracticedraw4.R;
 public class Practice13CameraRotateHittingFaceView extends View {
     Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
     Bitmap bitmap;
-    Point point = new Point(200, 50);
     Camera camera = new Camera();
     Matrix matrix = new Matrix();
     int degree;
@@ -40,13 +38,15 @@ public class Practice13CameraRotateHittingFaceView extends View {
 
     {
         bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.maps);
-        Bitmap scaledBitmap = Bitmap.createScaledBitmap(bitmap, bitmap.getWidth() * 2, bitmap.getHeight() * 2, true);
+        Bitmap scaledBitmap = Bitmap.createScaledBitmap(bitmap, (int) (bitmap.getWidth() * 2.5), (int) (bitmap.getHeight() * 2.5), true);
         bitmap.recycle();
         bitmap = scaledBitmap;
 
         animator.setDuration(5000);
         animator.setInterpolator(new LinearInterpolator());
         animator.setRepeatCount(ValueAnimator.INFINITE);
+        float z = camera.getLocationZ() * 3;
+        camera.setLocation(0, 0, z);
     }
 
     @Override
@@ -73,9 +73,10 @@ public class Practice13CameraRotateHittingFaceView extends View {
 
         int bitmapWidth = bitmap.getWidth();
         int bitmapHeight = bitmap.getHeight();
-        int centerX = point.x + bitmapWidth / 2;
-        int centerY = point.y + bitmapHeight / 2;
-
+        int centerX = getWidth() / 2;
+        int centerY = getHeight() / 2;
+        int x = centerX - bitmapWidth / 2;
+        int y = centerY - bitmapHeight / 2;
         camera.save();
         matrix.reset();
         camera.rotateX(degree);
@@ -85,7 +86,7 @@ public class Practice13CameraRotateHittingFaceView extends View {
         matrix.postTranslate(centerX, centerY);
         canvas.save();
         canvas.concat(matrix);
-        canvas.drawBitmap(bitmap, point.x, point.y, paint);
+        canvas.drawBitmap(bitmap, x, y, paint);
         canvas.restore();
     }
 }
