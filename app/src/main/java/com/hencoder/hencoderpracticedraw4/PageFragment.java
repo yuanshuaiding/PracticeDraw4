@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewStub;
 
+import com.hencoder.hencoderpracticedraw4.sample.Sample15FlipboardView;
+
 public class PageFragment extends Fragment {
     @LayoutRes int sampleLayoutRes;
     @LayoutRes int practiceLayoutRes;
@@ -34,7 +36,6 @@ public class PageFragment extends Fragment {
         ViewStub practiceStub = (ViewStub) view.findViewById(R.id.practiceStub);
         practiceStub.setLayoutResource(practiceLayoutRes);
         practiceStub.inflate();
-
         return view;
     }
 
